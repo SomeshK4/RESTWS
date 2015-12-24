@@ -8,10 +8,8 @@
 	<servlet>
 		<servlet-name>Jersey-Servlet</servlet-name>
 		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-		<!-- <init-param>
-			<param-name>com.sun.jersey.config.provider.packages</param-name>
-			<param-value>com.rest.ws</param-value>
-		</init-param> -->
+		<!-- <init-param> <param-name>com.sun.jersey.config.provider.packages</param-name> 
+			<param-value>com.rest.ws</param-value> </init-param> -->
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
 			<param-value>com.rest.application.ApplicationResourceConfig</param-value>
@@ -25,8 +23,8 @@
 
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>Secured</web-resource-name>
-			<url-pattern>/message/*</url-pattern>
+			<web-resource-name>SecuredAdmin</web-resource-name>
+			<url-pattern>/rest/message/securedAdmin/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>jersey</role-name>
@@ -35,6 +33,21 @@
 	<security-role>
 		<role-name>jersey</role-name>
 	</security-role>
+
+	<security-role>
+		<role-name>secured</role-name>
+	</security-role>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Secured</web-resource-name>
+			<url-pattern>/rest/message/secured/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>secured</role-name>
+		</auth-constraint>
+	</security-constraint>
+
 	<login-config>
 		<auth-method>BASIC</auth-method>
 		<realm-name>Login</realm-name>
